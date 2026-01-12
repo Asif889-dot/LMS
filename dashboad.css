@@ -1,0 +1,180 @@
+/* * LMS-PRO COMPREHENSIVE STYLESET
+ * Features: Animated Mesh Background, Glassmorphism, and Pro-SaaS UI
+ */
+
+/* --- 1. CORE VARIABLES --- */
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary: #64748b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --purple: #8b5cf6;
+    --bg-body: #f8fafc;
+    --border-color: rgba(0, 0, 0, 0.08);
+
+    /* Mesh Gradient Colors */
+    --m-1: rgba(79, 70, 229, 0.08);
+    --m-2: rgba(139, 92, 246, 0.1);
+    --m-3: rgba(59, 130, 246, 0.05);
+}
+
+/* --- 2. THE BEAUTIFUL BACKGROUND --- */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+    background-color: var(--bg-body);
+    /* Multi-layered radial gradients for the mesh look */
+    background-image:
+        radial-gradient(at 0% 0%, var(--m-1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, var(--m-2) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, var(--m-1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, var(--m-3) 0px, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Floating Blob Decoration */
+body::after {
+    content: "";
+    position: fixed;
+    top: 20%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, transparent 70%);
+    z-index: -1;
+    animation: float-slow 15s infinite alternate ease-in-out;
+}
+
+@keyframes float-slow {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-100px, 100px);
+    }
+}
+
+/* --- 3. NAVIGATION (Glassmorphism) --- */
+.navbar {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 0.75rem 0;
+}
+
+.navbar-brand span {
+    letter-spacing: -0.03em;
+}
+
+/* --- 4. CARDS (Glass & Depth) --- */
+.stat-card,
+.course-card,
+.auth-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 1.25rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover,
+.course-card:hover {
+    background: #ffffff !important;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* --- 5. COMPONENTS & UTILITIES --- */
+.icon-box {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.bg-soft-primary {
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.bg-soft-green {
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.bg-soft-purple {
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+/* --- 6. BUTTONS --- */
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+}
+
+.btn-outline-primary {
+    border-width: 2px;
+    font-weight: 700;
+}
+
+/* --- 7. PROGRESS BARS --- */
+.progress {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary), var(--purple));
+}
+
+/* --- 8. TYPOGRAPHY & EXTRA --- */
+.tracking-tight {
+    letter-spacing: -0.025em;
+}
+
+.icon-sm {
+    width: 18px;
+    height: 18px;
+}
+
+.border-dashed {
+    border: 2px dashed var(--secondary) !important;
+    background: transparent !important;
+}
+
+/* Auth Page specific grid */
+.bg-auth {
+    background-image:
+        radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+    background-size: 32px 32px;
+}

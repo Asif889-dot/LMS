@@ -1,0 +1,98 @@
+/* LMS-PRO Master UX Styles */
+
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --bg-body: #f9fafb;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+/* Auth Pages Background */
+.bg-auth {
+    background-color: #f3f4f6;
+    background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* Card Styling */
+.auth-card,
+.feature-card {
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+.form-label {
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.025em;
+}
+
+.input-group-text {
+    border-color: var(--border-color);
+    color: #9ca3af;
+}
+
+.form-control {
+    border-color: var(--border-color);
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+}
+
+.form-control:focus {
+    background-color: #fff !important;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    z-index: 3;
+}
+
+/* Password Toggle Button Fix */
+#togglePassword {
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-top-right-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    z-index: 4;
+}
+
+#togglePassword:hover {
+    color: var(--primary) !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Alert Styling */
+.alert-danger {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+/* Utilities */
+.tracking-tight {
+    letter-spacing: -0.025em;
+}

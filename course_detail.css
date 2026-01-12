@@ -1,0 +1,161 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --primary-soft: #eff6ff;
+    --secondary: #64748b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --danger-soft: #fef2f2;
+    --warning: #f59e0b;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --border: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --radius: 1rem;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. NAVIGATION
+   ========================================= */
+.navbar {
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 0;
+}
+
+.navbar-brand span {
+    letter-spacing: -0.5px;
+    font-size: 1.25rem;
+}
+
+.nav-link {
+    font-weight: 600;
+    color: var(--secondary) !important;
+    transition: color 0.2s ease;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: var(--primary) !important;
+}
+
+/* =========================================
+   3. COURSE CARDS & CONTAINERS
+   ========================================= */
+.content-card {
+    background: #ffffff;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Course Grid Animation */
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.course-preview-placeholder {
+    height: 180px;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    border-radius: calc(var(--radius) - 0.25rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* =========================================
+   4. BUTTONS & UI ELEMENTS
+   ========================================= */
+.btn {
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+.btn-soft-danger {
+    background-color: var(--danger-soft);
+    color: var(--danger);
+    border: 1px solid #fee2e2;
+}
+
+.btn-soft-danger:hover {
+    background-color: var(--danger);
+    color: white;
+}
+
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.bg-soft-purple { background-color: #f5f3ff; color: #7c3aed; }
+.bg-soft-primary { background-color: var(--primary-soft); }
+
+/* =========================================
+   5. CURRICULUM & ASSESSMENT
+   ========================================= */
+.accordion-item {
+    border: 1px solid var(--border) !important;
+    margin-bottom: 0.75rem;
+    border-radius: 0.75rem !important;
+    overflow: hidden;
+}
+
+.accordion-button {
+    font-weight: 600;
+    padding: 1.25rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    box-shadow: none;
+}
+
+.enroll-prompt {
+    background: #ffffff;
+    border: 2px dashed var(--border);
+    padding: 3rem;
+    text-align: center;
+}
+
+/* =========================================
+   6. UTILITIES
+   ========================================= */
+.icon-sm { width: 18px; height: 18px; vertical-align: middle; }
+.rounded-pill { border-radius: 50rem !important; }
+.text-secondary { color: var(--secondary) !important; }
+
+/* Custom Radio Styling for Quiz */
+.custom-radio .form-check-input:checked {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.course-header {
+    background: white;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+}
