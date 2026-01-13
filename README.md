@@ -70,14 +70,6 @@ The system relies on a relational MySQL database to maintain data integrity and 
 1. Create a database named `lms_db`.
 2. Import the SQL schema provided in the documentation to create the necessary tables.
 
-### 3. SMTP Configuration
-
-Update the following credentials in `register.php` to enable email verification:
-
-* **Host:** `mail.softzila.com`
-* **Port:** `465` (SSL/TLS)
-* **Username:** `noreply@softzila.com`
-
 ### 4. Composer Installation
 
 Run the following command in your terminal to install PHPMailer:
