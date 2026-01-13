@@ -70,7 +70,7 @@ The system relies on a relational MySQL database to maintain data integrity and 
 1. Create a database named `lms_db`.
 2. Import the SQL schema provided in the documentation to create the necessary tables.
 
-### 4. Composer Installation
+### 3. Composer Installation
 
 Run the following command in your terminal to install PHPMailer:
 
