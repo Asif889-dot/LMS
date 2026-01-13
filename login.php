@@ -1,10 +1,11 @@
 <?php
 ob_start();
-require_once 'config.php'; // Ensure session_start() is inside here
+require_once 'config.php';
 require_once 'User.php';
 
 $user = new User();
 
+// Redirect if already logged in
 if ($user->isLoggedIn()) {
     $role = $_SESSION['role'];
     if ($role === 'admin') header("Location: admin_users.php");
@@ -12,6 +13,9 @@ if ($user->isLoggedIn()) {
     else header("Location: dashboard.php");
     exit;
 }
+
+$error = "";
+$warning = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = htmlspecialchars(strip_tags(trim($_POST['username'])));
@@ -23,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $role = $_SESSION['role'];
 
         // --- CRITICAL FIX START ---
-        // This ensures the session is saved BEFORE the redirect happens
         session_write_close();
         // --- CRITICAL FIX END ---
 
@@ -35,8 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: dashboard.php");
         }
         exit;
+    } elseif ($login_status === "not_verified") {
+        $warning = "Your email is not verified. Please check your inbox for the verification link.";
     } elseif ($login_status === "account_disabled") {
-        $error = "This account has been disabled.";
+        $error = "This account has been disabled by the administrator.";
     } else {
         $error = "Invalid username or password.";
     }
@@ -55,6 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
         .bg-auth {
             background: #f0f4f8;
             min-height: 100vh;
@@ -95,19 +104,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="auth-card p-4 p-sm-5 rounded-4 shadow-sm bg-white">
                     <h3 class="fw-bold mb-4">Welcome Back</h3>
 
-                    <?php if (isset($error)): ?>
+                    <?php if ($error): ?>
                         <div class="alert alert-danger d-flex align-items-center border-0 py-2 mb-4">
                             <i data-lucide="alert-circle" class="me-2" style="width: 18px;"></i>
                             <div style="font-size: 0.85rem;"><?php echo $error; ?></div>
                         </div>
                     <?php endif; ?>
 
+                    <?php if ($warning): ?>
+                        <div class="alert alert-warning d-flex align-items-center border-0 py-2 mb-4">
+                            <i data-lucide="mail" class="me-2" style="width: 18px;"></i>
+                            <div style="font-size: 0.85rem;"><?php echo $warning; ?></div>
+                        </div>
+                    <?php endif; ?>
+
                     <form method="POST" autocomplete="off">
                         <div class="mb-3">
-                            <label class="form-label small fw-semibold text-muted text-uppercase">Username</label>
+                            <label class="form-label small fw-semibold text-muted text-uppercase">Username or Email</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-white"><i data-lucide="user" style="width: 16px;"></i></span>
-                                <input type="text" class="form-control" name="username" placeholder="Username" required>
+                                <input type="text" class="form-control" name="username" placeholder="Username or Email" required>
                             </div>
                         </div>
 
@@ -148,12 +164,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         toggleBtn.addEventListener('click', () => {
             const isPassword = passwordInput.type === 'password';
             passwordInput.type = isPassword ? 'text' : 'password';
-
-            // Set new icon name
             const newIcon = isPassword ? 'eye-off' : 'eye';
             toggleIcon.setAttribute('data-lucide', newIcon);
-
-            // Refresh Lucide
             lucide.createIcons();
         });
     </script>

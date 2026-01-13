@@ -1,10 +1,9 @@
-- [x] Add responsive styling (style.css with Bootstrap integration)
-- [x] Add JavaScript (script.js for course selection/dropping and interactivity)
-=======
-## Styling and Interactivity
-- [x] Add responsive styling (style.css with Bootstrap integration)
-- [x] Add JavaScript (script.js for course selection/dropping and interactivity)
+# TODO: Improve Dashboard with Profile Picture Feature
 
-## Missing Files Fixed
-- [x] Create dashboard.php (student dashboard)
-- [x] Create script.js (JavaScript functionality)
+## Tasks
+- [x] Add profile_picture column to users table in database.sql.
+- [x] Update User.php to handle profile picture updates.
+- [x] Modify profile_update.php to include file upload form and validation.
+- [x] Update dashboard.php to display profile picture instead of initial.
+- [x] Create uploads/profile_pics directory.
+- [ ] Test file upload and display functionality.
